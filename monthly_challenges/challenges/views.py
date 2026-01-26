@@ -12,12 +12,16 @@ def challenges_by_month_str(request, month: str):
 
     try:
         challenge = month_challenges.get_challenge_str(month)
-        response_data = render_to_string("challenges/challenge.html")
-        return HttpResponse(response_data)
-    
+        return render(
+            request,
+            "challenges/challenge.html",
+            {"text": challenge, "month": month},
+        )
+        # response_data = render_to_string("challenges/challenge.html")
+        # return HttpResponse(response_data)
+
     except Exception as e:
         return HttpResponseNotFound(f"Month doesn't exist. Cause: {e}")
-
 
 
 def challenges_by_month_int(request, month: int):
@@ -34,18 +38,22 @@ def challenges_by_month_int(request, month: int):
         return HttpResponseRedirect(redirect_str)
 
 
-def challenges(request):
+def index(request):
     # Init month challenges
     months = Month_challenges().get_list_months()
 
-    response_content = "<ul>"
+    return render(request, "challenges/index.html", {"months": months})
 
-    for month in months:
-        month_link = reverse("challenges_by_month", args=[month])
-        response_content += (
-            f'<li><a href = "{month_link}">{month.capitalize()}</a></li>'
-        )
+    # response_content = "<ul>"
 
-    response_content += "</ul>"
+    # for month in months:
+    #     month_link = reverse("challenges_by_month", args=[month])
+    #     response_content += (
+    #         f'<li><a href = "{month_link}">{month.capitalize()}</a></li>'
+    #     )
 
-    return HttpResponse(response_content)
+    # response_content += "</ul>"
+
+    # return HttpResponse(response_content)
+
+
