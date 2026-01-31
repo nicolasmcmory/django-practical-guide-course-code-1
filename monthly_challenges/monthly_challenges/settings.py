@@ -25,11 +25,11 @@ SECRET_KEY = "django-insecure-u8e8b63s&&2_gcxc!fj(3eknjsvpp^f0!8mbx*s4k5)2$d#-h%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# Set to [] in development, add your domain in production and or local ip e.g.: ["yourdomain.com", "127.0.0.1"]
 ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     "challenges",
     "django.contrib.admin",
@@ -55,7 +55,7 @@ ROOT_URLCONF = "monthly_challenges.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -116,3 +116,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]

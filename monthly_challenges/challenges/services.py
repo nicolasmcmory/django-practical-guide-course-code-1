@@ -14,7 +14,7 @@ class Month_challenges:
             "september": "Learn Django for at least 20 minutes every day!",
             "october": "Eat no meat for the entire month!",
             "november": "Walk for at least 20 minutes every day!",
-            "december": "Learn Django for at least 20 minutes every day!",
+            "december": None,
         }
         self.list_of_months = list(self.month_challenges.keys())
 

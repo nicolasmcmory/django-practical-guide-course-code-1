@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import (
+    HttpResponse,
+    HttpResponseNotFound,
+    HttpResponseRedirect,
+    Http404,
+)
 from django.urls import reverse
 from .services import Month_challenges
 from django.template.loader import render_to_string
@@ -17,11 +22,9 @@ def challenges_by_month_str(request, month: str):
             "challenges/challenge.html",
             {"text": challenge, "month": month},
         )
-        # response_data = render_to_string("challenges/challenge.html")
-        # return HttpResponse(response_data)
 
     except Exception as e:
-        return HttpResponseNotFound(f"Month doesn't exist. Cause: {e}")
+        raise Http404(e)
 
 
 def challenges_by_month_int(request, month: int):
@@ -31,7 +34,7 @@ def challenges_by_month_int(request, month: int):
 
     # Test if month is Exception
     if isinstance(month, Exception):
-        return HttpResponseNotFound(month)
+        raise Http404()
 
     else:
         redirect_str = reverse("challenges_by_month", args=[month])
@@ -55,5 +58,3 @@ def index(request):
     # response_content += "</ul>"
 
     # return HttpResponse(response_content)
-
-
