@@ -6,31 +6,35 @@
 {% endblock %}
 
 {% block content %}
-  <div class="container py-5">
-    <div class="row mb-4">
+  <main class="container py-5">
+    <header class="row mb-4">
       <div class="col text-center">
         <h1 class="display-4">Welcome to my blog!</h1>
         <p class="lead">This is the landing page of my blog. Discover posts, news, and more below.</p>
       </div>
-    </div>
-    <div class="row justify-content-center">
+    </header>
+    <section class="row justify-content-center">
       <div class="col-md-10">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <section class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
           {% for post_slug, post in posts.items %}
-            <div class="col d-flex align-items-stretch">
+            <article class="col d-flex align-items-stretch">
               <div class="card mb-4 w-100">
                 <div class="card-body d-flex flex-column">
+                  {% if post.image %}
+                    <img src="{% static 'blog/images/'|add:post.image %}" class="card-img-top mb-3" alt="{{ post.title }}" />
+                  {% endif %}
                   <h2 class="card-title">{{ post.title }}</h2>
                   <p class="card-text">{{ post.content }}</p>
                   <div class="mt-auto">
-                    <a href="{% url 'blog_post' post_slug=post_slug %}" class="btn btn-primary">Read More</a>
+                    {% url 'blog_post' post_slug as post_url %}
+                    {% include 'snippets/button.html' with url=post_url label='Read More' %}
                   </div>
                 </div>
               </div>
-            </div>
+            </article>
           {% endfor %}
-        </div>
+        </section>
       </div>
-    </div>
-  </div>
+    </section>
+  </main>
 {% endblock %}

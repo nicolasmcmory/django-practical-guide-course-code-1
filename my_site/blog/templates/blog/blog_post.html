@@ -10,14 +10,16 @@
     <div class="row mb-4">
       <div class="col text-center">
         <h1 class="display-4">{{ post.title }}</h1>
-        <p class="lead">Published on {{ post.published_date }}</p>
+        {% if post.published_date %}
+          <p class="lead">Published on {{ post.published_date|date:'F j, Y' }}</p>
+        {% endif %}
       </div>
     </div>
     <div class="row justify-content-center">
       <div class="col-md-10">
         <div class="card mx-auto" style="max-width: 800px;">
-          {% if post.image_url %}
-            <img src="{{ post.image_url }}" class="card-img-top" alt="{{ post.title }}" />
+          {% if post.image %}
+            <img src="{% static 'blog/images/'|add:post.image %}" class="card-img-top" alt="{{ post.title }}" />
           {% endif %}
           <div class="card-body">
             <p class="card-text">{{ post.content }}</p>

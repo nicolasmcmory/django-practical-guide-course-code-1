@@ -1,0 +1,24 @@
+{% extends 'default_page.html' %}
+{% load static %}
+
+{% block page_title %}
+  Page Not Found
+{% endblock %}
+
+{% block content %}
+  <div class="container py-5">
+    <div class="row mb-4">
+      <div class="col text-center">
+        <h1 class="display-4">404 - Page Not Found</h1>
+        <p class="lead">Sorry, the page you are looking for does not exist.</p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="alert alert-warning text-center" role="alert">
+          Please check the URL or return to the <a href="{% url 'blog_landing' %}">home page</a>.
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
