@@ -12,4 +12,4 @@ class Book(models.Model):
     is_bestselling = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"Title: {self.title} Rating: {self.rating}"
+        return f"Title: {self.title}, Author: {self.author} Rating: {self.rating}"
