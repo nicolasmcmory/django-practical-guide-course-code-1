@@ -21,7 +21,3 @@ class Book(models.Model):
 
     def __str__(self):
         return f"Title: {self.title}, Author: {self.author} Rating: {self.rating}"
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
-        super().save(*args, **kwargs)
