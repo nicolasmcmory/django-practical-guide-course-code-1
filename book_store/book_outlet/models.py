@@ -8,6 +8,12 @@ class Country(models.Model):
     name = models.CharField(max_length=80)
     code = models.CharField(max_length=3)
 
+    class Meta:
+        verbose_name_plural = "Countries"
+
+    def __str__(self):
+        return f"{self.name} ({self.code})"
+
 
 class Address(models.Model):
 
@@ -51,7 +57,9 @@ class Book(models.Model):
     slug = models.SlugField(
         default="", null=False, db_index=True
     )  # formats to "harry-potter-1" for example automatically
-    publised_country = models.ManyToManyField(Country)
+    published_countries = models.ManyToManyField(
+        Country, null=False, related_name="books"
+    )
 
     # Override default save conditionnally to avoid empty slugs (created using shell), fo Admin UI is already set up in params
     def save(self, *args, **kwargs):
