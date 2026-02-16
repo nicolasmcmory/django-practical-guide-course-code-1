@@ -3,4 +3,4 @@ __pycache__
 *.wav
 *.sqlite3
 prog_cheat_sheet.html
-/migrations/
+migrations
