@@ -4,10 +4,30 @@ from django.urls import reverse
 from django.utils.text import slugify
 
 
+class Country(models.Model):
+    name = models.CharField(max_length=80)
+    code = models.CharField(max_length=3)
+
+
+class Address(models.Model):
+
+    street = models.CharField(max_length=100)
+    postal_code = models.CharField(max_length=10)
+    city = models.CharField(max_length=20)
+    country = models.ManyToManyField(Country)
+
+    class Meta:
+        verbose_name_plural = "Addresses"
+
+    def __str__(self):
+        return f"{self.street} {self.postal_code} {self.city}"
+
+
 # Data relations
 class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
+    address = models.OneToOneField(Address, on_delete=models.CASCADE, null=True)
 
     # Dunder method, override
     def full_name(self):
@@ -17,7 +37,7 @@ class Author(models.Model):
         return self.full_name()
 
 
-# id field is set automatically by Django
+# id field is set automatically by Django, one-to-many
 class Book(models.Model):
     title = models.CharField(max_length=50, default="no_title")
     rating = models.IntegerField(
@@ -31,6 +51,15 @@ class Book(models.Model):
     slug = models.SlugField(
         default="", null=False, db_index=True
     )  # formats to "harry-potter-1" for example automatically
+    publised_country = models.ManyToManyField(Country)
+
+    # Override default save conditionnally to avoid empty slugs (created using shell), fo Admin UI is already set up in params
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            super().save(*args, **kwargs)
+            self.slug = f"{slugify(self.title)}"
+            return super().save(update_fields=["slug"])
+        return super().save(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse("book-detail", args=[self.slug])

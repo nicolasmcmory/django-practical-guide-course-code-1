@@ -7,9 +7,13 @@
 
   <ul>
     {% for book in books %}
-      <li>
-        <a style="text-decoration: none;" href="{{ book.get_absolute_url }}">{{ book.title }}</a> (Rating:{{ book.rating }})
-      </li>
+      {% if book.slug %}
+        <li>
+          <a style="text-decoration: none;" href="{{ book.get_absolute_url }}">{{ book.title }}</a> (Rating:{{ book.rating }})
+        </li>
+      {% else %}
+        <li>{{ book.title }} (No detail page: missing slug)</li>
+      {% endif %}
     {% endfor %}
   </ul>
 {% endblock %}
