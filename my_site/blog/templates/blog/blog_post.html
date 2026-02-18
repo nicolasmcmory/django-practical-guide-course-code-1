@@ -13,6 +13,9 @@
         {% if post.published_date %}
           <p class="lead">Published on {{ post.published_date|date:'F j, Y' }}</p>
         {% endif %}
+        {% if post.author %}
+          <p class="lead">Authored by: {{ post.author.first_name }}</p>
+        {% endif %}
       </div>
     </div>
     <div class="row justify-content-center">
