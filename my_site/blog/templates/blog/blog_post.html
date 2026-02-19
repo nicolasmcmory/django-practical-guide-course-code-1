@@ -14,7 +14,12 @@
           <p class="lead">Published on {{ post.published_date|date:'F j, Y' }}</p>
         {% endif %}
         {% if post.author %}
-          <p class="lead">Authored by: {{ post.author.first_name }}</p>
+          <p class="lead">
+            Authored by: <a href="{% url 'author' post.author.first_name %}">{{ post.author.first_name }}</a>
+          </p>
+        {% endif %}
+        {% if captions %}
+          <p class="lead">Tags: {{ captions }}</p>
         {% endif %}
       </div>
     </div>
