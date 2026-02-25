@@ -1,4 +1,4 @@
-#TODO: reviews views.py
+#Reviews_App:views.py
 from django.shortcuts import render
 from django.http import HttpResponse
 
