@@ -1,4 +1,4 @@
-# Feedback_project: urls.py
+# urls: feedback
 """
 URL configuration for feedback project.
 
