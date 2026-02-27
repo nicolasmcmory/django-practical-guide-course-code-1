@@ -1,4 +1,3 @@
-{% comment %}#html: review{% endcomment %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,6 +7,10 @@
   </head>
   <body>
     <form method="POST">
+      {% csrf_token %}
+      {% if has_error %}
+        <p>Invalid username</p>
+      {% endif %}
       <label for="username">Your name</label>
       <input id="username" name="username" type="text" />
       <button type="submit">Submit</button>
