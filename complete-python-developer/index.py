@@ -1,5 +1,4 @@
-from utility.utils import fun_fun
+from utility.utils import file_getter_reader
 
-print(__name__)
 if __name__ == "__main__":
-    fun_fun()
+    file_getter_reader("./text.txt")
