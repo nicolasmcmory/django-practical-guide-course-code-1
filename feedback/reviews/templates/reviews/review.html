@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your review</title>
-    <script src="{% static 'review_form.js' %}"></script>
+    <script src="{% static 'reviews/review_form.js' %}"></script>
   </head>
   <style>
     input:invalid,
@@ -22,7 +22,7 @@
       {% for field in form %}
         <div style="margin-bottom: 1rem;">{{ field.label_tag }} {{ field }}</div>
         {% for error in field.errors %}
-          <div class="error">{{ error }}</div>
+          <div style="margin-bottom: 1rem;" class="error">{{ error }}</div>
         {% endfor %}
       {% endfor %}
       <button type="submit">Submit</button>
