@@ -1,18 +1,30 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your review</title>
+    <script src="{% static 'review_form.js' %}"></script>
   </head>
+  <style>
+    input:invalid,
+    textarea:invalid,
+    select:invalid {
+      border: 2px solid #e74c3c;
+      background-color: #fceaea;
+    }
+  </style>
   <body>
-    <form method="POST">
+    <form method="POST" novalidate>
       {% csrf_token %}
-      {% if has_error %}
-        <p>Invalid username</p>
-      {% endif %}
-      <label for="username">Your name</label>
-      <input id="username" name="username" type="text" />
+      {% for field in form %}
+        <div style="margin-bottom: 1rem;">{{ field.label_tag }} {{ field }}</div>
+        {% for error in field.errors %}
+          <div class="error">{{ error }}</div>
+        {% endfor %}
+      {% endfor %}
       <button type="submit">Submit</button>
     </form>
   </body>
