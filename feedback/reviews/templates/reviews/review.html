@@ -23,21 +23,20 @@
           {% csrf_token %}
           {% for field in form %}
             <div class="field-row">
-              {% if field.name != 'rating' %}
-                {{ field.label_tag }} {{ field }}
-              {% else %}
+              {% if field.name == 'rating' %}
                 <label for="{{ field.0.id_for_label }}">{{ field.label }}:</label>
                 <div class="rating-row">
                   {% for subwidget in field %}
-                    <div class="rating-item">
+                    <label class="rating-item" for="{{ subwidget.id_for_label }}">
                       {{ subwidget.tag }}
-                      <div class="rating-label">{{ subwidget.choice_label }}</div>
-                    </div>
+                      <span class="rating-label">{{ subwidget.choice_label }}</span>
+                    </label>
                   {% endfor %}
                 </div>
+              {% else %}
+                {{ field.label_tag }} {{ field }}
               {% endif %}
             </div>
-            {% comment %}backup server-side validation error provision{% endcomment %}
             {% for error in field.errors %}
               <div class="error">{{ error }}</div>
             {% endfor %}
