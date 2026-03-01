@@ -6,26 +6,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your review</title>
-    <script src="{% static 'reviews/review_form.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'reviews/form.css' %}" />
   </head>
-  <style>
-    input:invalid,
-    textarea:invalid,
-    select:invalid {
-      border: 2px solid #e74c3c;
-      background-color: #fceaea;
-    }
-  </style>
   <body>
-    <form method="POST" novalidate>
-      {% csrf_token %}
-      {% for field in form %}
-        <div style="margin-bottom: 1rem;">{{ field.label_tag }} {{ field }}</div>
-        {% for error in field.errors %}
-          <div style="margin-bottom: 1rem;" class="error">{{ error }}</div>
-        {% endfor %}
-      {% endfor %}
-      <button type="submit">Submit</button>
-    </form>
+    <div class="feedback-form-container">
+      <div class="feedback-form-header">
+        Feedback Form
+        <span class="close">×</span>
+      </div>
+      <div class="feedback-form-panel">
+        <strong>Send us your feedback!</strong>
+        <div class="panel-sub">Do you have a suggestion or found some bug? let us know in the field below.</div>
+      </div>
+      <div class="feedback-form-inner">
+        <form class="feedback-form" method="POST" novalidate>
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="field-row">
+              {% if field.name != 'rating' %}
+                {{ field.label_tag }} {{ field }}
+              {% else %}
+                {{ field.label_tag }}
+                <div class="rating-row">
+                  {% for subwidget in field %}
+                    <div class="rating-item">
+                      {{ subwidget.tag }}
+                      <div class="rating-label">{{ subwidget.choice_label }}</div>
+                    </div>
+                  {% endfor %}
+                </div>
+              {% endif %}
+            </div>
+            {% comment %}backup server-side validation error provision{% endcomment %}
+            {% for error in field.errors %}
+              <div class="error">{{ error }}</div>
+            {% endfor %}
+          {% endfor %}
+          <button type="submit">Send Feedback</button>
+        </form>
+      </div>
+    </div>
+    <script src="{% static 'reviews/review_form.js' %}"></script>
   </body>
 </html>
