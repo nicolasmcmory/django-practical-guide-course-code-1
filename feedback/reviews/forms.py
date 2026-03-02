@@ -1,13 +1,21 @@
 from django import forms
+from .models import Review
 
 
-class ReviewForm(forms.Form):
-    user_name = forms.CharField(label="Your name", max_length=50)
-    review_text = forms.CharField(
-        label="Your feedback", widget=forms.Textarea, max_length=200
-    )
+class ReviewForm(forms.ModelForm):
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 6)]
+
     rating = forms.ChoiceField(
         label="Your Rating",
-        choices=[(i, str(i)) for i in range(1, 6)],
+        choices=RATING_CHOICES,
         widget=forms.RadioSelect,
     )
+
+    class Meta:
+
+        model = Review
+        fields = "__all__"
+        labels = {
+            "user_name": "Your Name",
+            "review_text": "Your Review",
+        }
