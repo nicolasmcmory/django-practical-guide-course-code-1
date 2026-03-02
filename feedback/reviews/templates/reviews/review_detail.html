@@ -1,0 +1,26 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+
+{% block title %}
+  Review Detail
+{% endblock %}
+
+{% block content %}
+  <section class="review-detail-container">
+    <div class="feedback-form-header review-detail-header">
+      Review Detail
+      <span class="close">×</span>
+    </div>
+    <article class="review-card review-detail-card">
+      <header class="review-card-header">
+        <span class="review-card-user">{{ review.user_name }}</span>
+      </header>
+      <div class="review-card-rating">
+        <span class="review-card-rating-label">Rating:</span> {{ review.rating }}
+      </div>
+      {% if review.comment %}
+        <div class="review-card-comment">{{ review.comment }}</div>
+      {% endif %}
+    </article>
+  </section>
+{% endblock %}

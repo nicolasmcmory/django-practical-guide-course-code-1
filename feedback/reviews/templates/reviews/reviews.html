@@ -1,0 +1,36 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+
+{% block title %}
+  Reviews
+{% endblock %}
+
+{% block content %}
+  <section class="reviews-list-container">
+    <div class="feedback-form-header reviews-list-header">
+      All Reviews
+      <span class="close">×</span>
+    </div>
+    <div class="reviews-list">
+      {% if reviews %}
+        <div class="reviews-grid">
+          {% for review in reviews %}
+            <article class="review-card">
+              <header class="review-card-header">
+                <a class="review-card-user" href="{% url 'review-detail' review.id %}">{{ review.user_name }}</a>
+              </header>
+              <div class="review-card-rating">
+                <span class="review-card-rating-label">Rating:</span> {{ review.rating }}
+              </div>
+              {% if review.comment %}
+                <div class="review-card-comment">{{ review.comment|truncatewords:20 }}</div>
+              {% endif %}
+            </article>
+          {% endfor %}
+        </div>
+      {% else %}
+        <div class="feedback-form-panel">No reviews yet.</div>
+      {% endif %}
+    </div>
+  </section>
+{% endblock %}

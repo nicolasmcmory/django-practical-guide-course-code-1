@@ -3,10 +3,12 @@ from django.http import HttpResponseRedirect
 from .forms import ReviewForm
 from .models import Review
 from django.views import View
+from django.views.generic.base import TemplateView
 
 
 # Using class-based views
 class ReviewView(View):
+
     def get(self, request):
         form = ReviewForm()
         return render(request, "reviews/review.html", {"form": form})
@@ -47,7 +49,7 @@ class ReviewView(View):
         form = ReviewForm(request.POST, instance=existing_reviews)
 
         if form.is_valid():
-            form.save()
+            form.save()trl + p binding for 
             # review = Review(
             #     user_name=form.cleaned_data["user_name"],
             #     review_text=form.cleaned_data["review_text"],
@@ -62,5 +64,24 @@ class ReviewView(View):
     return render(request, "reviews/review.html", {"form": form}) """
 
 
-def thank_you(request):
-    return render(request, "reviews/thank_you.html")
+class ThankYouView(TemplateView):
+    template_name = "reviews/thank_you.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["message"] = "Your information has been successfully susmitted."
+        return context
+
+
+class ReviewsView(View):
+
+    def get(self, request):
+        reviews = Review.objects.all()
+        return render(request, "reviews/reviews.html", {"reviews": reviews})
+
+
+class ReviewDetail(View):
+
+    def get(self, request, review_id):
+        review = Review.objects.get(pk=review_id)
+        return render(request, "reviews/review_detail.html", {"review": review})
