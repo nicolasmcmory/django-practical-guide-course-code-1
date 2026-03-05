@@ -32,6 +32,7 @@ applyTo: "**"
 - Define all CSS classes, `hx-*` attributes, and `data-*` hooks exclusively in templates via `{% render_field %}`.
 - Apply the **Atomic Partial** pattern: create `partials/field.html` for DOM structure and inject field-specific attributes with `{% render_field %}`.
 - Never generate HTML attributes inside Python form classes. Only modify `.html` or `.css` for design changes.
+-In Django views, avoid using specialized form-handling libraries or patterns. Stick to standard Django forms and views for maximum clarity and compatibility with HTMX (GET for form display, POST for submission, and partials for HTMX responses).
 
 ## Async Strategy
 
@@ -70,7 +71,7 @@ applyTo: "**"
 
 ## CSS / Frontend Standards
 
-- Use **CSS Variables** for color palette (Primary, Secondary, Surface, Error), an 8px spacing scale, and fluid typography.
+- Use **CSS Variables** for color palette (Primary, Secondary, Surface, Error), an 8px spacing scale, and fluid typography. Variables should be defined in a `:root` selector in the main stylesheet.
 - Implement a **CSS Grid/Flexbox** layout system: Container, Holy Grail layout, Auto-fitting Cards.
 - Always use **.css files** for styling. Never inline styles or generate them from Python.
 - Include a browser-normalizing **Reset**.

@@ -1,0 +1,26 @@
+<section class="review-detail-container">
+  <div class="feedback-form-header review-detail-header">{{ review.user_name }}'s Review</div>
+  <article class="review-card review-detail-card">
+    <header class="review-card-header">
+      <span class="review-card-user">
+        {% if show_link %}
+          <a href="{% url 'review-detail' review.id %}">{{ review.user_name }}</a>
+        {% else %}
+          {{ review.user_name }}
+        {% endif %}
+      </span>
+    </header>
+    <div class="review-card-rating">
+      <span class="review-card-rating-label">Rating:</span> {{ review.rating }}
+    </div>
+    {% if review.review_text %}
+      <div class="review-card-comment">
+        {% if truncate_length %}
+          {{ review.review_text|truncatewords:truncate_length }}
+        {% else %}
+          {{ review.review_text }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </article>
+</section>
