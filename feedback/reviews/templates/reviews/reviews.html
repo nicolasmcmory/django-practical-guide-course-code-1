@@ -9,7 +9,6 @@
   <section class="reviews-list-container">
     <div class="feedback-form-header reviews-list-header">
       All Reviews
-      <span class="close">×</span>
     </div>
     <div class="reviews-list">
       {% if reviews %}
@@ -22,8 +21,9 @@
         <div class="feedback-form-panel">No reviews yet.</div>
       {% endif %}
     </div>
-    <div>
-      <a href="{% url 'review' %}">Leave a review</a>
+    <div class="button-container">
+      {% include 'reviews/snippets/default_button.html' with button_text='Leave a review' url='review' %}
     </div>
   </section>
+  <script src="{% static 'reviews/reviews.js' %}"></script>
 {% endblock %}

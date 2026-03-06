@@ -37,12 +37,16 @@
             <div class="error">{{ error }}</div>
           {% endfor %}
         {% endfor %}
-        <button type="submit">Send Feedback</button>
+        <button class="default-button" type="submit">Send Feedback</button>
       </form>
     </div>
-    <div>
-      <a href="{% url 'reviews' %}">Go to reviews</a>
+    <div class="button-container">
+      {% include 'reviews/snippets/default_button.html' with button_text='Exit' url='thanks' %}
+    </div>
+    <div class="button-container">
+      {% include 'reviews/snippets/default_button.html' with button_text='Visit Reviews' url='reviews' %}
     </div>
   </div>
   <script src="{% static 'reviews/review_form.js' %}"></script>
-{% endblock %}
+  {% endblock %}
+  

@@ -57,11 +57,24 @@
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: var(--space-xl);
 }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .review-card {
   background: var(--color-panel-bg);
   border-radius: var(--radius-sm);
   box-shadow: 0 2px 8px rgba(20, 30, 40, 0.06);
   padding: var(--space-lg);
+  animation: fadeInUp 0.4s ease both;
 }
 .review-card-header {
   margin-bottom: var(--space-sm);
@@ -220,7 +233,7 @@
   font-size: var(--font-sm);
 }
 
-.feedback-form button[type="submit"] {
+.default-button {
   width: 100%;
   background: var(--color-accent);
   color: #fff;
@@ -230,6 +243,16 @@
   font-weight: 700;
   cursor: pointer;
   margin-top: var(--space-sm);
+}
+
+.button-container {
+  margin-top: var(--space-lg);
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  align-items: center;
+  /* width: 50%; */
+  margin: 1rem;
 }
 
 /* Responsive adjustments */
