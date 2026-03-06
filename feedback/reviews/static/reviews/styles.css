@@ -1,7 +1,7 @@
 /* Feedback form card layout */
 :root {
   /* Color palette */
-  --color-primary: red;
+  --color-primary: rgb(158, 156, 57);
   --color-secondary: #007acc;
   --color-accent: #008fee;
   --color-bg: #ffffff;
@@ -36,6 +36,17 @@
 
   /* Box shadow */
   --shadow-card: 0 8px 24px rgba(20, 30, 40, 0.08);
+}
+
+/* nav bar */
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
 }
 
 /* Reviews List Layout */
@@ -234,7 +245,6 @@
 }
 
 .default-button {
-  width: 100%;
   background: var(--color-accent);
   color: #fff;
   border: none;

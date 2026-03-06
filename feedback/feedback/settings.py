@@ -55,7 +55,7 @@ ROOT_URLCONF = "feedback.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [BASE_DIR / "feedback/templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

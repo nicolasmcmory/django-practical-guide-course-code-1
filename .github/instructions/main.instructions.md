@@ -25,14 +25,21 @@ applyTo: "**"
 - Use **HTMX partial swaps** for micro-interactions (inline updates, live search, toasts).
 - Place all HTMX fragment endpoints in `partials.py`. Keep full-page views in `views.py`.
 - Prefix all HTMX URLs with `/hx/`.
+-Document Structure: DTL (block, extends) — Assembles the raw HTML shell.
+-Loops & Conditionals: DTL (for, if) — Dictates how many items exist, not what they look like.
+-Data Formatting: DTL Filters (|date, |lower) — Delivers print-ready text to the browser instantly.
+-UI Layout & Design: Bespoke Vanilla CSS — Total visual control, zero backend pollution.
+-State & Animations: Vanilla JS — Manages transitions and toggles via data- attributes.
+-Server Interactivity: HTMX — Transports the DTL-assembled HTML over the wire.
 
 ## Django Forms & Widget-Tweaks
 
-- Keep `forms.py` clean: use `ModelForm` strictly as a data-validation engine with no styling or widget attributes — **Headless Intent**.
+- Keep `forms.py` clean: use `Form` strictly as a data-validation engine with no styling or widget attributes — **Headless Intent**.
 - Define all CSS classes, `hx-*` attributes, and `data-*` hooks exclusively in templates via `{% render_field %}`.
 - Apply the **Atomic Partial** pattern: create `partials/field.html` for DOM structure and inject field-specific attributes with `{% render_field %}`.
 - Never generate HTML attributes inside Python form classes. Only modify `.html` or `.css` for design changes.
 -In Django views, avoid using specialized form-handling libraries or patterns. Stick to standard Django forms and views for maximum clarity and compatibility with HTMX (GET for form display, POST for submission, and partials for HTMX responses).
+-Pre-Submit Validation: Vanilla JS — Provides instant UX feedback without network latency.
 
 ## Async Strategy
 
@@ -59,6 +66,7 @@ applyTo: "**"
 - Never store secrets in code. Use **Google Secret Manager**.
 - Disable dormant API keys. Enforce API restrictions and IAM Least Privilege via IAM Recommender.
 - Enforce mandatory key rotation. Set Essential Contacts and configure Billing Anomaly/Budget Alerts.
+-Complex Data Transfer: Django json_script — Safely passes structured Python data to Vanilla JS without polluting <script> tags.
 
 ## Performance
 
