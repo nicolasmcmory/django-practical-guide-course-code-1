@@ -14,7 +14,7 @@ applyTo: "**"
 ## Tech Stack
 
 - **AI**: Vertex AI and Gemini API via Google ADK.
-- **Frontend**: HTMX, vanilla JS (Alpine.js where needed), Bootstrap + SASS, Django templates. DRF only for microservice APIs.
+- **Frontend**: HTMX, vanilla JS, Bootstrap + SASS, Django templates. DRF only for microservice APIs.
 - **Databases**: PostgreSQL (primary RDBMS), Pinecone (vector DB).
 - **DB Setup**: Primary-secondary replication (async/sync), query caching, PGbouncer for the monolith.
 
@@ -78,9 +78,11 @@ applyTo: "**"
 - Ensure styles are compatible with HTMX request indicators (`.htmx-request`, `.htmx-indicator`).
 - Keep stylesheet total size **under 10KB**.
 - Use semantic HTML tags: `<section>`, `<main>`, `<article>`, `<nav>`, `<header>`, `<footer>`.
+-Include a distinct JS file for each Django template that requires interactivity. Name the JS file to match the template (e.g., `reviews.js` for `reviews.html`) and place it in the corresponding static directory. Always load the JS file at the end of the template, just before the closing `</body>` tag, to ensure the DOM is fully loaded before any scripts run.
 
 ## Code Quality
 
 - Place a **Rational Block** comment at the top of every file describing its purpose, responsibilities, and key decisions. This provides immediate context for AI coding assistants and human reviewers.
 - Write unit tests with the **Django test framework**. Write UI tests (including HTMX and JS behavior) with **Selenium**.
+-Use a consistent code style: 4-space indentation, snake_case for Python, camelCase for JS, and BEM for CSS. 
 
