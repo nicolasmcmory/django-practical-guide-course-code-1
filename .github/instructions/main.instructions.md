@@ -92,5 +92,5 @@ applyTo: "**"
 
 - Place a **Rational Block** comment at the top of every file describing its purpose, responsibilities, and key decisions. This provides immediate context for AI coding assistants and human reviewers.
 - Write unit tests with the **Django test framework**. Write UI tests (including HTMX and JS behavior) with **Selenium**.
--Use a consistent code style: 4-space indentation, snake_case for Python, camelCase for JS, and BEM for CSS. 
+-Use a consistent code style: 4-space indentation, snake_case for Python, camelCase for JS, and BEM (Block, Element, Modifier) for CSS. 
 

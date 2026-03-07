@@ -277,3 +277,12 @@
   margin-top: 0.5rem;
   color: var(--color-error);
 }
+
+a {
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+
+a:hover {
+  color: var(--color-primary);
+}

@@ -1,5 +1,4 @@
 {% extends 'reviews/base.html' %}
-{% load static %}
 
 {% block title %}
   Review Detail
@@ -7,7 +6,4 @@
 
 {% block content %}
   {% include 'reviews/snippets/detail_card.html' with review=review show_link=False %}
-  <div>
-    <a href="{% url 'reviews' %}">Back to reviews</a>
-  </div>
 {% endblock %}

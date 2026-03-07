@@ -85,3 +85,8 @@ class ReviewDetail(View):
     def get(self, request, review_id):
         review = Review.objects.get(pk=review_id)
         return render(request, "reviews/review_detail.html", {"review": review})
+
+
+# Blank url redirect
+def home(request):
+    return HttpResponseRedirect("/reviews")

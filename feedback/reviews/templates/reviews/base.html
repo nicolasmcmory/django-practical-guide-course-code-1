@@ -1,5 +1,4 @@
 {% load static %}
-{% include 'reviews/snippets/nav_bar.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,13 +8,14 @@
     <link rel="stylesheet" href="{% static 'reviews/styles.css' %}" />
     <title>
       {% block title %}
-
+        Default
       {% endblock %}
     </title>
   </head>
   <body>
+    {% include 'reviews/snippets/nav_bar.html' %}
     {% block content %}
-
+      Content goes here
     {% endblock %}
     <script src="{% static 'reviews/main.js' %}"></script>
   </body>
