@@ -288,11 +288,11 @@
   color: var(--color-error);
 }
 
-a {
+a.review-card-user-link {
   text-decoration: none;
   color: var(--color-secondary);
 }
 
-a:hover {
+a.review-card-user-link:hover {
   color: var(--color-primary);
 }

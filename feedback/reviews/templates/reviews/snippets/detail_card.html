@@ -4,7 +4,7 @@
     <header class="review-card-header">
       <span class="review-card-user">
         {% if show_link %}
-          <a href="{% url 'review-detail' review.id %}">{{ review.user_name }}</a>
+          <a class="review-card-user-link" href="{% url 'review-detail' review.id %}">{{ review.user_name }}</a>
         {% else %}
           {{ review.user_name }}
         {% endif %}
