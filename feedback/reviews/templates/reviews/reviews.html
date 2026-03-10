@@ -7,9 +7,7 @@
 
 {% block content %}
   <section class="reviews-list-container">
-    <div class="feedback-form-header reviews-list-header">
-      All Reviews
-    </div>
+    <div class="form-header reviews-list-header">All Reviews</div>
     <div class="reviews-list">
       {% if reviews %}
         <div class="reviews-grid">
@@ -18,7 +16,7 @@
           {% endfor %}
         </div>
       {% else %}
-        <div class="feedback-form-panel">No reviews yet.</div>
+        <div class="form-panel">No reviews yet.</div>
       {% endif %}
     </div>
     <div class="button-container">

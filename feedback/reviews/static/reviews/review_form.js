@@ -1,6 +1,6 @@
 "use strict";
 // Static global variables
-const form = document.querySelector(".feedback-form");
+const form = document.querySelector(".form");
 const ratingRow = document.querySelector(".rating-row");
 const ratingContainer = ratingRow.parentNode;
 const usernameInput = document.querySelector("#id_user_name");

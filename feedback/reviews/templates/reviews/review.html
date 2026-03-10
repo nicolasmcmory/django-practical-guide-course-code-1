@@ -5,17 +5,17 @@
   Feedback Form
 {% endblock %}
 {% block content %}
-  <div class="feedback-form-container">
-    <div class="feedback-form-header">
+  <div class="form-container">
+    <div class="form-header">
       Feedback Form
       <span class="close">×</span>
     </div>
-    <div class="feedback-form-panel">
+    <div class="form-panel">
       <strong>Send us your feedback!</strong>
       <div class="panel-sub">Do you have a suggestion or found some bug? let us know in the field below.</div>
     </div>
-    <div class="feedback-form-inner">
-      <form class="feedback-form" method="POST" novalidate>
+    <div class="form-inner">
+      <form class="form" method="POST" novalidate>
         {% csrf_token %}
         {% for field in form %}
           <div class="field-row">
