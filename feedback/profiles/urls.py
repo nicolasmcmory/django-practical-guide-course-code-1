@@ -6,5 +6,5 @@ urlpatterns = [
         "upload-file/",
         UploadFile.as_view(),
         name="upload-file",
-    ),
+    )
 ]
