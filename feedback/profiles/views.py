@@ -11,6 +11,5 @@ class UploadFile(View):
         file = request.FILES["file_upload"]
         if file:
             # Handle the uploaded file here
-            
             pass
         return render(request, "profiles/upload_file.html")
