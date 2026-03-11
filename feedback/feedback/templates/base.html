@@ -1,23 +1,25 @@
 {% load static %}
 {% load widget_tweaks %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <meta name="description" content="Feedback application" />
+    <meta name="keywords" content="feedback, application" />
+    <link rel="stylesheet" href="{% static "styles.css" %}" />
     <title>
       {% block title %}
         Default
-      {% endblock %}
+      {% endblock title %}
     </title>
   </head>
   <body>
-    {% include 'snippets/nav_bar.html' %}
+    {% include "snippets/nav_bar.html" %}
     {% block content %}
       Content goes here
-    {% endblock %}
-    <script src="{% static 'main.js' %}"></script>
+    {% endblock content %}
+    {% include "snippets/footer.html" %}
+    <script src="{% static "main.js" %}"></script>
   </body>
 </html>

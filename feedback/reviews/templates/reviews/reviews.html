@@ -1,10 +1,8 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
 {% block title %}
   Reviews
-{% endblock %}
-
+{% endblock title %}
 {% block content %}
   <section class="reviews-list-container">
     <div class="form-header reviews-list-header">All Reviews</div>
@@ -12,16 +10,13 @@
       {% if reviews %}
         <div class="reviews-grid">
           {% for review in reviews %}
-            {% include 'snippets/detail_card.html' with review=review show_link=True truncate_length=100 %}
+            {% include "snippets/detail_card.html" with review=review show_link=True truncate_length=100 %}
           {% endfor %}
         </div>
       {% else %}
         <div class="form-panel">No reviews yet.</div>
       {% endif %}
     </div>
-    <div class="button-container">
-      {% include 'snippets/default_button.html' with button_text='Leave a review' url='review' %}
-    </div>
   </section>
-  <script src="{% static 'reviews/reviews.js' %}"></script>
-{% endblock %}
+  <script src="{% static "reviews/reviews.js" %}"></script>
+{% endblock content %}

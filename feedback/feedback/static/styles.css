@@ -36,18 +36,22 @@
 
   /* Box shadow */
   --shadow-card: 0 8px 24px rgba(20, 30, 40, 0.08);
+
+  /* Neutral */
+  --color-white: #fff;
 }
 
 /* nav bar */
 .nav-bar {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: var(--space-lg);
   padding: var(--space-md) var(--space-xl);
   background: var(--color-primary);
-  color: #fff;
+  color: var(--color-white);
   font-weight: 700;
-  height: 50px;
+  height: 100%;
 }
 
 /* Reviews List Layout */
@@ -55,14 +59,19 @@
   max-width: 720px;
   margin: var(--space-xxl) auto;
 }
-.reviews-list-header {
+.reviews-list-header,
+.review-detail-header {
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
-.reviews-list {
-  background: url("./img/back.png");
-  padding: var(--space-xl);
+
+.reviews-list,
+.review-detail-card {
   border-radius: 0 0 var(--radius-md) var(--radius-md);
   box-shadow: var(--shadow-card);
+}
+
+.reviews-list {
+  padding: var(--space-xl);
 }
 .reviews-grid {
   display: grid;
@@ -116,12 +125,7 @@
   max-width: 480px;
   margin: var(--space-xxl) auto;
 }
-.review-detail-header {
-  border-radius: var(--radius-md) var(--radius-md) 0 0;
-}
 .review-detail-card {
-  border-radius: 0 0 var(--radius-md) var(--radius-md);
-  box-shadow: var(--shadow-card);
   background: var(--color-panel-bg);
   padding: var(--space-xl);
 }
@@ -144,7 +148,7 @@
     var(--color-primary),
     var(--color-secondary)
   );
-  color: #fff;
+  color: var(--color-white);
   padding: var(--space-lg) var(--space-xl);
   font-size: var(--font-header);
   font-weight: 700;
@@ -247,7 +251,7 @@
 
 .default-button {
   background: var(--color-accent);
-  color: #fff;
+  color: var(--color-white);
   border: none;
   padding: var(--space-md);
   border-radius: var(--radius-sm);
@@ -267,11 +271,11 @@
   gap: var(--space-lg);
   justify-content: center;
   align-items: center;
-  margin: 1rem;
+  margin: 0.5rem;
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .form-container {
     margin: var(--space-lg);
   }
@@ -295,4 +299,23 @@ a.review-card-user-link {
 
 a.review-card-user-link:hover {
   color: var(--color-primary);
+}
+
+.footer {
+  text-align: center;
+  padding: var(--space-md);
+  font-size: var(--font-sm);
+  color: var(--color-panel-sub);
+}
+
+.footer-container {
+  max-width: 720px;
+  margin: var(--space-xxl) auto;
+}
+
+.footer-nav {
+  display: flex;
+  gap: var(--space-lg);
+  justify-content: center;
+  margin-bottom: var(--space-md);
 }

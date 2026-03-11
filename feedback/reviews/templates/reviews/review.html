@@ -1,9 +1,8 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
-
 {% block title %}
   Feedback Form
-{% endblock %}
+{% endblock title %}
 {% block content %}
   <div class="form-container">
     <div class="form-header">
@@ -15,11 +14,11 @@
       <div class="panel-sub">Do you have a suggestion or found some bug? let us know in the field below.</div>
     </div>
     <div class="form-inner">
-      <form class="form" method="POST" novalidate>
+      <form class="form" method="post" novalidate>
         {% csrf_token %}
         {% for field in form %}
           <div class="field-row">
-            {% if field.name == 'rating' %}
+            {% if field.name == "rating" %}
               <label for="{{ field.0.id_for_label }}">{{ field.label }}:</label>
               <div class="rating-row">
                 {% for subwidget in field %}
@@ -33,13 +32,11 @@
               {{ field.label_tag }} {{ field }}
             {% endif %}
           </div>
-          {% for error in field.errors %}
-            <div class="error">{{ error }}</div>
-          {% endfor %}
+          {% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}
         {% endfor %}
         <button class="default-button" type="submit">Send Feedback</button>
       </form>
     </div>
   </div>
-  <script src="{% static 'reviews/review_form.js' %}"></script>
-{% endblock %}
+  <script src="{% static "reviews/review_form.js" %}"></script>
+{% endblock content %}
