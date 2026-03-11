@@ -1,9 +1,9 @@
-{% extends 'reviews/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}
   Review Detail
 {% endblock %}
 
 {% block content %}
-  {% include 'reviews/snippets/detail_card.html' with review=review show_link=False %}
+  {% include 'snippets/detail_card.html' with review=review show_link=False %}
 {% endblock %}

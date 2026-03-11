@@ -1,4 +1,4 @@
-{% extends 'reviews/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}
@@ -12,7 +12,7 @@
       {% if reviews %}
         <div class="reviews-grid">
           {% for review in reviews %}
-            {% include 'reviews/snippets/detail_card.html' with review=review show_link=True truncate_length=100 %}
+            {% include 'snippets/detail_card.html' with review=review show_link=True truncate_length=100 %}
           {% endfor %}
         </div>
       {% else %}
@@ -20,7 +20,7 @@
       {% endif %}
     </div>
     <div class="button-container">
-      {% include 'reviews/snippets/default_button.html' with button_text='Leave a review' url='review' %}
+      {% include 'snippets/default_button.html' with button_text='Leave a review' url='review' %}
     </div>
   </section>
   <script src="{% static 'reviews/reviews.js' %}"></script>
