@@ -1,10 +1,15 @@
 from django.urls import path
-from .views import UploadFile
+from .views import CreateProfile, ProfilesHome
 
 urlpatterns = [
     path(
-        "upload-file/",
-        UploadFile.as_view(),
-        name="upload-file",
-    )
+        "",
+        ProfilesHome.as_view(),
+        name="profiles-home",
+    ),
+    path(
+        "create-profile/",
+        CreateProfile.as_view(),
+        name="create-profile",
+    ),
 ]

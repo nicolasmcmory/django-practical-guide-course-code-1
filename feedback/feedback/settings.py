@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     "reviews",
     "profiles",
+    "widget_tweaks",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -116,10 +117,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-# Static and media urls
-STATIC_URL = "static/"
-MEDIA_URL = "/media/"
-
-# Static files and media dirs
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "feedback/static"]
-MEDIA_ROOT = BASE_DIR / "feedback/media"
+
+MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_URL = "/media/"
