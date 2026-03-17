@@ -10,7 +10,7 @@
       {% if reviews %}
         <div class="reviews-grid">
           {% for review in reviews %}
-            {% include "snippets/detail_card.html" with review=review show_link=True truncate_length=100 %}
+            {% include "snippets/detail_card.html" with review=review favorite=review.is_favorite show_link=True truncate_length=100 %}
           {% endfor %}
         </div>
       {% else %}

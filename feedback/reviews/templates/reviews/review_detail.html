@@ -1,9 +1,12 @@
-{% extends 'base.html' %}
-
+{% extends "base.html" %}
 {% block title %}
   Review Detail
-{% endblock %}
-
+{% endblock title %}
 {% block content %}
-  {% include 'snippets/detail_card.html' with review=review show_link=False %}
-{% endblock %}
+  {% include "snippets/detail_card.html" with review=review favorite=favorite show_link=False %}
+  <form action="{% url "add-favorite" %}" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="review_id" value="{{ review.id }}" />
+    <button class="default-button">Favorite</button>
+  </form>
+{% endblock content %}

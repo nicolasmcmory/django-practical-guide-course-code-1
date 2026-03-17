@@ -1,10 +1,14 @@
 <section class="review-detail-container">
-  <div class="form-header review-detail-header">{{ review.user_name }}'s Review</div>
+  <div class="form-header review-detail-header">
+    {{ review.user_name }}'s Review
+    {% if favorite %}<span>★</span>{% endif %}
+  </div>
   <article class="review-card review-detail-card">
     <header class="review-card-header">
       <span class="review-card-user">
         {% if show_link %}
-          <a class="review-card-user-link" href="{% url 'review-detail' review.id %}">{{ review.user_name }}</a>
+          <a class="review-card-user-link"
+             href="{% url 'review-detail' review.id %}">{{ review.user_name }}</a>
         {% else %}
           {{ review.user_name }}
         {% endif %}

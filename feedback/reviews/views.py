@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .forms import ReviewForm
 from .models import Review
 from django.views import View
@@ -74,15 +75,31 @@ class ThankYouView(TemplateView):
 
 
 class ReviewsView(View):
-
     def get(self, request):
         reviews = Review.objects.all()
+        favorite = request.session.get("favorite_review")
+        # Add an is_favorite attribute to each review object to indicate whether it is the user's favorite review or not, and pass this information to the template. This is dynamic and doesn't require any changes to the database schema, and it allows you to easily display the favorite review in the template without having to query the database again.
+        for review in reviews:
+            review.is_favorite = review.id == favorite
         return render(request, "reviews/reviews.html", {"reviews": reviews})
 
 
 class ReviewDetail(View):
-
     def get(self, request, review_id):
         review = Review.objects.get(pk=review_id)
-        return render(request, "reviews/review_detail.html", {"review": review})
+        return render(
+            request,
+            "reviews/review_detail.html",
+            {
+                "review": review,
+                "favorite": review_id == request.session.get("favorite_review"),
+            },
+        )
 
+
+class AddFavoriteView(View):
+    def post(self, request):
+        review_id = int(request.POST["review_id"])
+        request.session["favorite_review"] = review_id
+        redirect_url = reverse("review-detail", kwargs={"review_id": review_id})
+        return HttpResponseRedirect(redirect_url)
