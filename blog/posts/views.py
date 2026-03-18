@@ -1,19 +1,23 @@
 from django.shortcuts import render
+from django.urls import reverse
 from django.views import View
 from .models import Post
 from .forms import PostForm
+from django.http import HttpResponseRedirect
 
 
 # Create your views here.
 class CreatePost(View):
+
     def get(self, request):
-        return render(request, "posts/post.html")
+        form = PostForm()
+        return render(request, "posts/post.html", {"form": form})
 
     def post(self, request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            return render(request, "posts/post.html", {"form": form})
+            return HttpResponseRedirect(reverse("posts"))
         return render(request, "posts/post.html", {"form": form})
 
 
@@ -25,7 +29,7 @@ class PostDetail(View):
 
 class Posts(View):
 
-    posts = Post.objects.all()
+    posts = Post.objects.all().order_by("-date")
 
     def get(self, request):
         return render(request, "posts/posts.html", {"posts": self.posts})
