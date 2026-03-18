@@ -4,3 +4,5 @@ __pycache__
 *.sqlite3
 prog_cheat_sheet.html
 migrations
+*.png
+*/media/
