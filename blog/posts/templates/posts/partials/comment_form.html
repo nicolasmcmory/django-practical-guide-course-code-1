@@ -1,0 +1,17 @@
+{% comment %} Comment form for posts {% endcomment %}
+{% load widget_tweaks %}
+<div class="container">
+    <h1>Leave a Comment</h1>
+    <form action="{% url 'post_detail' post.slug %}" method="post">
+        {% csrf_token %}
+        <h3>Your Name:</h3>
+        {% render_field form.user_name class="form-control mb-2" placeholder="Enter your name" %}
+            <h3>Your Email:</h3>
+            {% render_field form.user_email class="form-control mb-2" placeholder="Enter your email" %}
+                <h3>Your Comment:</h3>
+                {% render_field form.content class="form-control mb-2" placeholder="Enter your comment" %}
+                    <div class="mb-2">
+                        <button type="submit" class="btn btn-primary">Submit Comment</button>
+                    </div>
+                </form>
+            </div>

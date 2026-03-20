@@ -4,9 +4,33 @@
     Post Detail
 {% endblock title %}
 {% block content %}
-    <div class="post-detail">
+    <div class="container">
         <h2>{{ post.title }}</h2>
         <p>{{ post.content }}</p>
-        <!-- Add more post details here -->
+        {% if post.img %}
+            <img src="{{ post.img.url }}"
+                 alt="{{ post.title }}"
+                 class="img__post"
+                 height="200"
+                 width="300" />
+        {% endif %}
+    </div>
+    <div class="flex gap-4">
+        <div class="container">
+            <h2>Comments:</h2>
+            {% for comment in comments %}
+                <div class="comment-item">
+                    <p>
+                        <strong>{{ comment.user_name }}</strong>
+                    </p>
+                    <p>{{ comment.content }}</p>
+                    <p>{{ comment.date }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        {% comment %} Edit Post Form {% endcomment %}
+        {% include "posts/partials/post_form.html" with title="Edit Post" form=form form_url="post_detail" %}
+        {% comment %} Leave a Comment Form {% endcomment %}
+        {% include "posts/partials/comment_form.html" with form=comment_form %}
     </div>
 {% endblock content %}
