@@ -1,0 +1,1 @@
+// Get global vars

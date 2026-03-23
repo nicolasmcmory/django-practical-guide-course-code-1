@@ -218,6 +218,10 @@ p {
   padding: 16px 0;
 }
 
+
+.text-danger {
+  color: #dc3545;
+}
 /* Mobile First Responsive */
 @media (max-width: 768px) {
   body {

@@ -8,6 +8,8 @@
         <meta name="description" content="A blog about various topics." />
         <meta name="keywords" content="blog, posts, articles, topics" />
         <link rel="stylesheet" href="{% static 'styles.css' %}" />
+        {% block extra_styles %}
+        {% endblock extra_styles %}
         <title>
             {% block title %}
             Title goes here

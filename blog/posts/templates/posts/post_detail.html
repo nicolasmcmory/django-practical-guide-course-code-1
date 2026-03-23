@@ -4,6 +4,19 @@
     Post Detail
 {% endblock title %}
 {% block content %}
+    <div id="read-later" class="container">
+        <form action="{% url "read_later" %}" class="container" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}" />
+            <button class="btn btn-primary">
+                {% if is_saved_for_later %}
+                    Remove from Read Later
+                {% else %}
+                    Add to Read Later
+                {% endif %}
+            </button>
+        </form>
+    </div>
     <div class="container">
         <h2>{{ post.title }}</h2>
         <p>{{ post.content }}</p>

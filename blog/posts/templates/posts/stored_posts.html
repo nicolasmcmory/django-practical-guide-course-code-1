@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="{% static 'posts/css/posts.css' %}" />
+{% endblock extra_styles %}
+{% block title %}
+    Stored Posts
+{% endblock title %}
+{% block content %}
+    <section class="read-later__section container">
+        <ul>
+            {% for post in posts %}
+                <li>
+                    <a href="{% url 'post_detail' slug=post.slug %}">{{ post.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock content %}

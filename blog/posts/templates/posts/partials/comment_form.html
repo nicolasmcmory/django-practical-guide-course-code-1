@@ -1,17 +1,30 @@
 {% comment %} Comment form for posts {% endcomment %}
 {% load widget_tweaks %}
+{% load static %}
 <div class="container">
     <h1>Leave a Comment</h1>
-    <form action="{% url 'post_detail' post.slug %}" method="post">
+    <form action="{% url 'post_detail' post.slug %}"
+          method="post"
+          id="comment-form"
+          novalidate>
         {% csrf_token %}
         <h3>Your Name:</h3>
-        {% render_field form.user_name class="form-control mb-2" placeholder="Enter your name" %}
+        {% render_field form.user_name class="form-control mb-2" placeholder="Enter your name" id="id_user_name" %}
+            {% for error in form.user_name.errors %}<div class="text-danger">{{ error }}</div>{% endfor %}
             <h3>Your Email:</h3>
-            {% render_field form.user_email class="form-control mb-2" placeholder="Enter your email" %}
+            {% render_field form.user_email class="form-control mb-2" placeholder="Enter your email" id="id_user_email" %}
+                {% for error in form.user_email.errors %}<div class="text-danger">{{ error }}</div>{% endfor %}
                 <h3>Your Comment:</h3>
-                {% render_field form.content class="form-control mb-2" placeholder="Enter your comment" %}
+                {% render_field form.content class="form-control mb-2" placeholder="Enter your comment" id="id_content" %}
+                    {% for error in form.content.errors %}<div class="text-danger">{{ error }}</div>{% endfor %}
                     <div class="mb-2">
                         <button type="submit" class="btn btn-primary">Submit Comment</button>
                     </div>
                 </form>
             </div>
+            
+            {% comment %} Template for error messages {% endcomment %}
+            <template id="error-template">
+                <div class="text-danger"></div>
+            </template>
+            <script src="{% static 'posts/js/commentForm.js' %}"></script>
