@@ -1,0 +1,26 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+    {% block style %}
+    {% comment %} Custom styles can be added here {% endcomment %}
+    {% endblock style %}
+
+    {% block title %}
+    <title>Base template</title>
+    {% endblock title %}
+</head>
+<body>
+    {% include "core/partials/nav_bar.html" %}
+
+    {% block content %}
+    <h3>Content goes here</h3>
+    {% endblock content %}
+    
+</body>
+</html>

@@ -6,3 +6,4 @@ prog_cheat_sheet.html
 migrations
 *.png
 media/
+.env

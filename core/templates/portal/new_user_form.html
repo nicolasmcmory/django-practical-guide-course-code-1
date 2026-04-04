@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}New User{% endblock title %}
+
+{% block content %}
+    <h1>Create a new user</h1>
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+
+        <section class="form-row">
+            {% render_field form.first_name class="field-input" placeholder="First Name" %}
+            {% render_field form.last_name class="field-input" placeholder="Last Name" %}
+        </section>
+
+        <section class="form-row">{% render_field form.email class="field-input" placeholder="Email" %}</section>
+        <input type="submit" value="Create user" class="button">
+
+    </form>
+{% endblock content %}
+
