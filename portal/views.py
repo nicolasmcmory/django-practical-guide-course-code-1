@@ -6,7 +6,8 @@ from . import forms
 
 class UsersView(View):
     def get(self, request):
-        return render(request, "portal/users.html")
+        users = UserInterface().get_all_users()
+        return render(request, "portal/users.html", {"users": users})
 
 
 class NewUserView(View):
