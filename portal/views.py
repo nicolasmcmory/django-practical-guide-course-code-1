@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.views import View
-from .services import UserInterface
+from .services.interfaces import UserInterface
 from . import forms
 
 
