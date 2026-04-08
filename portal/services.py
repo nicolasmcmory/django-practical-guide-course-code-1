@@ -22,8 +22,10 @@ class UserInterface:
         return users
 
     # Create a new user from form
-    def create_user(self, first_name, last_name, email):
+    def create_user(self, first_name, last_name, email, image=None):
         user = models.User.objects.create(
-            first_name=first_name, last_name=last_name, email=email
+            first_name=first_name, last_name=last_name, email=email, image=image
         )
         return user
+
+

@@ -1,0 +1,108 @@
+:root {
+  --primary-color: #004fa4;
+  --primary-color-hover: #0069d9;
+  --primary-color-active: #005cbf;
+  --primary-color-focus: #80bdff;
+}
+
+/* Navigation Bar */
+.nav_bar {
+  background-color: var(--primary-color);
+  padding: 1rem;
+}
+
+.nav_bar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav_bar a {
+  color: var(--primary-color-focus);
+  text-decoration: none;
+}
+
+.nav_bar a:hover {
+  font-size: 1.1rem;
+  color: var(--primary-color-hover);
+}
+
+/* Tiles */
+.tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+
+  padding: 1rem;
+  margin: 0.5rem 0;
+  background-color: #f8f9fa;
+  border-radius: 0.25rem;
+}
+
+.tile_layout {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.tile:hover {
+  background-color: var(--primary-color-hover);
+}
+
+/* Forms */
+.form {
+  margin: 1rem 0;
+  max-width: 500px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.field-input {
+  margin-bottom: 1rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  background-color: var(--primary-color);
+  border-radius: 0.25rem;
+}
+
+.button:hover {
+  background-color: var(--primary-color-hover);
+  color: #fff;
+}
+
+.button:active {
+  background-color: var(--primary-color-active);
+  color: #fff;
+}
+
+/* Countdown */
+.countdown__header {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}

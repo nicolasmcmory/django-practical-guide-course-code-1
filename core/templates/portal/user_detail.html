@@ -1,0 +1,12 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}User Detail{% endblock title %}
+
+{% block content %}
+    <h1>{{ user }}</h1>
+    {% if user.image %}
+        <img src="{{ user.image.url }}" alt="{{ user }}" class="user-image">
+    {% endif %}
+    <p>Email: {{ user.email }}</p>
+{% endblock content %}
