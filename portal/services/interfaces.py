@@ -1,5 +1,6 @@
 from .. import models
 
+
 class UserInterface:
     # get user by id
     def get_user_by_id(self, user_id):
@@ -29,3 +30,23 @@ class UserInterface:
         return user
 
 
+class PostInterface:
+    # Get post by id
+    def get_post_by_id(self, post_id):
+        post = models.Posts.objects.get(id=post_id)
+        return post
+
+    # Get all posts
+    def get_all_posts(self):
+        posts = models.Posts.objects.all()
+        return posts
+
+    # Create a new post from form
+    def create_post(self, title, content, author):
+        post = models.Posts.objects.create(title=title, content=content, author=author)
+        return post
+
+    # Get all posts by Author/User
+    def get_posts_by_author(self, author):
+        posts = models.Posts.objects.filter(author=author)
+        return posts

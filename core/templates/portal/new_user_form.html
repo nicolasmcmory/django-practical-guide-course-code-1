@@ -9,42 +9,46 @@
 {% block title %}New User{% endblock title %}
 
 {% block content %}
-    <h1>Create a new user</h1>
-    <form action="" method="post" class="form" enctype="multipart/form-data" novalidate>
-        {% csrf_token %}
 
-        <section class="form-row">
-            {% render_field form.first_name class="field-input" placeholder="First Name" %}
-            {% if form.first_name.errors %}
-                <div class="field-errors">
-                    {{ form.first_name.errors }}
-                </div>
-            {% endif %}
-            {% render_field form.last_name class="field-input" placeholder="Last Name" %}
-            {% if form.last_name.errors %}
-                <div class="field-errors">
-                    {{ form.last_name.errors }}
-                </div>
-            {% endif %}
-        </section>
+    <div class="form-container">
+        <h1>Create a new user</h1>
+        <form action="" method="post" class="form-container__form" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <section class="form-container__row">
+                {% render_field form.first_name class="form-container__field-input" placeholder="First Name" %}
+                {% if form.first_name.errors %}
+                    <div class="form-container__field-errors">
+                        {{ form.first_name.errors }}
+                    </div>
+                {% endif %}
+                {% render_field form.last_name class="form-container__field-input" placeholder="Last Name" %}
+                {% if form.last_name.errors %}
+                    <div class="form-container__field-errors">
+                        {{ form.last_name.errors }}
+                    </div>
+                {% endif %}
+            </section>
+            <section class="form-container__row">
+                {% render_field form.email class="form-container__field-input" placeholder="Email" %}
+                {% if form.email.errors %}
+                    <div class="form-container__field-errors">
+                        {{ form.email.errors }}
+                    </div>
+                {% endif %}
+            </section>
+            <section class="form-container__row">
+                {% render_field form.image class="form-container__field-input" %}
+                {% if form.image.errors %}
+                    <div class="form-container__field-errors">
+                        {{ form.image.errors }}
+                    </div>
+                {% endif %}
+            </section>
 
-        <section class="form-row">
-            {% render_field form.email class="field-input" placeholder="Email" %}
-            {% if form.email.errors %}
-                <div class="field-errors">
-                    {{ form.email.errors }}
-                </div>
-            {% endif %}
-        </section>
-        <section class="form-row">
-            {% render_field form.image class="field-input" %}
-            {% if form.image.errors %}
-                <div class="field-errors">
-                    {{ form.image.errors }}
-                </div>
-            {% endif %}
-        </section>
-        <input type="submit" value="Create user" class="button">
-
-    </form>
+            <section class="form-container__row">
+                <input type="submit" value="Create user" class="button">
+            </section>
+            
+        </form>
+    </div>
 {% endblock content %}

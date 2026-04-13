@@ -1,0 +1,50 @@
+{% extends "core/base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'portal/css/forms.css' %}" />
+{% endblock style %}
+
+{% block title %}New User{% endblock title %}
+
+{% block content %}
+<div class="form-container">
+    <h1>Create a new post</h1>
+    <form action="" method="post" class="form-container__form" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        <section class="form-container__row">
+            {% render_field form.title class="form-container__field-input" %}
+            {% if form.title.errors %}
+                <div class="form-container__field-errors">
+                    {{ form.title.errors }} 
+                </div>
+            {% endif %}
+        </section>
+        
+        <section class="form-container__row">
+            {% render_field form.content class="form-container__field-input" %}
+            {% if form.content.errors %}
+                <div class="form-container__field-errors">
+                    {{ form.content.errors }} 
+                </div>
+            {% endif %}
+        </section>
+
+        <section class="form-container__row">
+            {% render_field form.author class="form-container__field-input" %}
+            {% if form.author.errors %}
+                <div class="form-container__field-errors">
+                    {{ form.author.errors }} 
+                </div>
+            {% endif %}
+        </section>
+
+        <section class="form-container__row">
+            <input type="submit" value="Create post" class="button">
+        </section>
+
+    </form>
+</div>
+{% endblock content %}
